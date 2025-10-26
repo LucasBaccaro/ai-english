@@ -6,14 +6,16 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.baccaro.ai.di.DefaultAppContainer
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
+        val appContainer = DefaultAppContainer()
         setContent {
-            App()
+            App(appContainer)
         }
     }
 }
@@ -21,5 +23,6 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun AppAndroidPreview() {
-    App()
+    val appContainer = DefaultAppContainer()
+    App(appContainer)
 }

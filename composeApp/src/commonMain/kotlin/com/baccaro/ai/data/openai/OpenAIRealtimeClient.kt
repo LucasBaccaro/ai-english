@@ -41,7 +41,7 @@ class OpenAIRealtimeClient(
      * 5. Configure session with VAD
      */
     suspend fun connect(
-        model: String = "gpt-4o-realtime-preview-2024-10-01",
+        model: String = "gpt-realtime-mini-2025-10-06",
         voice: String = "alloy",
         instructions: String = "Eres un asistente conversacional amigable. Responde de forma natural como en una llamada telefónica.",
         onServerEvent: (ServerEvent) -> Unit
