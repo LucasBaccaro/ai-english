@@ -82,10 +82,10 @@ object EventParser {
                     json.decodeFromJsonElement<ResponseOutputAudioDoneEvent>(jsonObject)
 
                 // Response audio transcript events
-                "response.output_audio_transcript.delta" ->
-                    json.decodeFromJsonElement<ResponseOutputAudioTranscriptDeltaEvent>(jsonObject)
-                "response.output_audio_transcript.done" ->
-                    json.decodeFromJsonElement<ResponseOutputAudioTranscriptDoneEvent>(jsonObject)
+                "response.audio_transcript.delta" ->
+                    json.decodeFromJsonElement<ResponseAudioTranscriptDeltaEvent>(jsonObject)
+                "response.audio_transcript.done" ->
+                    json.decodeFromJsonElement<ResponseAudioTranscriptDoneEvent>(jsonObject)
 
                 // Function call events
                 "response.function_call_arguments.delta" ->

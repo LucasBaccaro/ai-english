@@ -236,9 +236,9 @@ data class ResponseOutputAudioDoneEvent(
 // Response Audio Transcript Events
 
 @Serializable
-@SerialName("response.output_audio_transcript.delta")
-data class ResponseOutputAudioTranscriptDeltaEvent(
-    override val type: String = "response.output_audio_transcript.delta",
+@SerialName("response.audio_transcript.delta")
+data class ResponseAudioTranscriptDeltaEvent(
+    override val type: String = "response.audio_transcript.delta",
     @SerialName("event_id") override val eventId: String,
     @SerialName("response_id") val responseId: String,
     @SerialName("item_id") val itemId: String,
@@ -248,9 +248,9 @@ data class ResponseOutputAudioTranscriptDeltaEvent(
 ) : ServerEvent
 
 @Serializable
-@SerialName("response.output_audio_transcript.done")
-data class ResponseOutputAudioTranscriptDoneEvent(
-    override val type: String = "response.output_audio_transcript.done",
+@SerialName("response.audio_transcript.done")
+data class ResponseAudioTranscriptDoneEvent(
+    override val type: String = "response.audio_transcript.done",
     @SerialName("event_id") override val eventId: String,
     @SerialName("response_id") val responseId: String,
     @SerialName("item_id") val itemId: String,

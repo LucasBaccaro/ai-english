@@ -140,6 +140,32 @@ class CallViewModel(
                         it.copy(messages = updatedMessages)
                     }
                 }
+                is ResponseAudioTranscriptDeltaEvent -> {
+                    // Update AI message with streaming audio transcript
+                    _uiState.update {
+                        val updatedMessages = it.messages.map { message ->
+                            if (message.id == event.itemId && !message.isUser) {
+                                message.copy(text = message.text + event.delta)
+                            } else {
+                                message
+                            }
+                        }
+                        it.copy(messages = updatedMessages)
+                    }
+                }
+                is ResponseAudioTranscriptDoneEvent -> {
+                    // Audio transcript completed - ensure full text is set
+                    _uiState.update {
+                        val updatedMessages = it.messages.map { message ->
+                            if (message.id == event.itemId && !message.isUser) {
+                                message.copy(text = event.transcript)
+                            } else {
+                                message
+                            }
+                        }
+                        it.copy(messages = updatedMessages)
+                    }
+                }
                 is ResponseCreatedEvent -> {
                     _uiState.update { it.copy(callState = it.callState.copy(isAISpeaking = true)) }
                 }

@@ -47,8 +47,8 @@ class EventHandler {
     var onAudioDone: ((ResponseOutputAudioDoneEvent) -> Unit)? = null
 
     // Audio transcript streaming (transcription of AI voice)
-    var onAudioTranscriptDelta: ((ResponseOutputAudioTranscriptDeltaEvent) -> Unit)? = null
-    var onAudioTranscriptDone: ((ResponseOutputAudioTranscriptDoneEvent) -> Unit)? = null
+    var onAudioTranscriptDelta: ((ResponseAudioTranscriptDeltaEvent) -> Unit)? = null
+    var onAudioTranscriptDone: ((ResponseAudioTranscriptDoneEvent) -> Unit)? = null
 
     // Function calling events
     var onFunctionCallArgumentsDelta: ((ResponseFunctionCallArgumentsDeltaEvent) -> Unit)? = null
@@ -165,11 +165,11 @@ class EventHandler {
                 }
 
                 // Audio transcript streaming
-                is ResponseOutputAudioTranscriptDeltaEvent -> {
+                is ResponseAudioTranscriptDeltaEvent -> {
                     print(event.delta) // Print transcript as it arrives
                     onAudioTranscriptDelta?.invoke(event)
                 }
-                is ResponseOutputAudioTranscriptDoneEvent -> {
+                is ResponseAudioTranscriptDoneEvent -> {
                     println("\n📝 Audio transcript done")
                     onAudioTranscriptDone?.invoke(event)
                 }
